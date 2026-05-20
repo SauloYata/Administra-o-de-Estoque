@@ -22,6 +22,12 @@ cd gestao-estoque
 python3 app.py
 ```
 3. Utilize os botões Consultar Produto ou Cadastrar produto
-- Para consultar os produtos da loja, insira o numero da loja e clique em Consultar Produtos, deve aparecer uma lista com todos os produtos disponiveis no estoque
+- Para consultar os produtos da loja, insira o numero da loja e clique em Consultar Produtos, deve aparecer uma lista com todos os produtos disponiveis no estoque. 
+
+Lojas disponíveis:
+* 1001
+* 1002
+* 1003
+
 - Para consultar um produto específico, digite o número da loja e o nome do produto e depois clique em Consultar Produtos, deverá aparecer o resultado com as informações do produto unitário.
 - Para cadastrar um novo produto, clique em Cadastrar Produtos, digite o nome do produto, o preço, a quantidade, e o numero da loja, depois clique em incluir. 

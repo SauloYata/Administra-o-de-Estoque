@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 import db
 
 #abre a janela principal
@@ -32,21 +33,17 @@ def abrir_tela():
 def busca():
     loja = entrada_loja.get().strip()
     produto = entrada_produto.get()
-    texto = ""
 
     if not loja:
-        mostrar_msg("digita o número da loja primeiro")
+        print("digita o número da loja primeiro")
         return False
     
     elif produto:
             item = db.consultar_produto(produto, int(loja))
-            mostrar_msg(item)
+            tabela(item)
     else:
         todos_produtos = db.listar_produtos(int(loja))
-
-        for item in todos_produtos:
-                texto += f"{item}\n"
-        mostrar_msg(texto)    
+        tabela(todos_produtos)    
 
 
 #cadastrar produtos no banco de dados    
@@ -144,11 +141,25 @@ def cadastrar():
     tk.Button(cadastro, text="Fechar", command=cadastro.destroy).pack()
 
 
-def mostrar_msg(texto):
-        loja = int(entrada_loja.get().strip())
-        estoque = tk.Toplevel()
-        estoque.geometry("350x250")
-        estoque.title(f"Produtos em Estoque na Loja: {loja}")
 
-        tk.Label(estoque, text=texto).pack(pady=20)
-        tk.Button(estoque, text="OK", command=estoque.destroy).pack()
+
+#exibe a tabela de resultado da busca por produtos
+def tabela(texto):
+    resultado = tk.Tk()
+    resultado.title("Produtos no Estoque")
+
+    colunas = ("Produto", "Valor", "Quantidade", "vendidos")
+    tabela = ttk.Treeview(resultado, columns=colunas, show="headings")
+    for c in colunas:
+        tabela.heading(c, text=c)
+        tabela.column(c, width=120, anchor="center")
+    tabela.pack(fill="both", expand=True)
+
+    
+    for item in texto:
+        tabela.insert("", "end", values=item)
+
+    tabela.mainloop()
+
+if __name__ == "__main__":
+    tabela()

@@ -2,7 +2,8 @@ import tela
 import db
 
 #cria o banco de dados e as tabelas caso não existam
-db.criar_db()
+database = "estoque.db"
+db.criar_db(database)
 
 
 

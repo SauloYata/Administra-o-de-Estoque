@@ -1,21 +1,24 @@
 import sqlite3
 import os
 
-
-DB = "estoque.db"
+db = "estoque.db"
 
 #cria banco de dados com os produtos no sqlite
-def criar_db():
-    
-    # já existe, nada a fazer
-    if os.path.exists(DB):
-        print("Databaase já existe!")
-        return   
+def criar_db(path=db):
+        if os.path.exists(path):
+                print("DB já Existe!")
+                return True
+        else:
+               criar_tabelas()
+               print("pegou")
 
-    # Cria o banco de dados do sqlite    
-    else:
-        
-        connection = sqlite3.connect(DB)
+# Conecta o banco de dados do sqlite
+
+
+
+def criar_tabelas():        
+        # Conecta o banco de dados do sqlite
+        connection = sqlite3.connect(f"{db}")
         cursor = connection.cursor()
 
         # Banco de dados da loja 1
@@ -43,22 +46,22 @@ def criar_db():
         cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Camisa', 18.22, 131, 59)")
         cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Casaco', 22.50, 181, 19)")
         cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Vestido', 13.9, 511, 99)")
-        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Meias', 99,99, 121, 39)")
+        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Meia', 99.99, 121, 39)")
 
         connection.commit()
         connection.close()
 
-        print(f"DB {DB} criado com sucesso!")
+        print(f"DB {db} criado com sucesso!")
 
-        return   
+        return True
     
 
-# Conecta o banco de dados do sqlite
-connection = sqlite3.connect(DB)
-cursor = connection.cursor()
 
 #Lista todos os produtos no estoque de uma loja
 def listar_produtos(loja):
+    # Conecta o banco de dados do sqlite
+    connection = sqlite3.connect(f"{db}")
+    cursor = connection.cursor()    
     if loja == 1001:
             produtos = cursor.execute("SELECT * FROM ProdutosLoja1").fetchall()
             return produtos
@@ -76,32 +79,37 @@ def listar_produtos(loja):
 
 #Lista cada produto individualmente no estoque de uma loja
 def consultar_produto(nome, loja):
+    # Conecta o banco de dados do sqlite
+    connection = sqlite3.connect(f"{db}")
+    cursor = connection.cursor()    
     if loja == 1001:
-            item = cursor.execute(f"SELECT * FROM ProdutosLoja1 WHERE nome = '{nome}'").fetchone()
+            item = cursor.execute(f"SELECT * FROM ProdutosLoja1 WHERE nome = '{nome}'").fetchall()
             if not item:
                   print("Produto não Encontrado!")
-                  return "Produto não encontrado"
+                  return False
             
             print(item)
             return item
     
     elif loja == 1002:
-            item = cursor.execute(f"SELECT * FROM ProdutosLoja2 WHERE nome = '{nome}'").fetchone()
+            item = cursor.execute(f"SELECT * FROM ProdutosLoja2 WHERE nome = '{nome}'").fetchall()
             print(item)
             return item
     
 
     elif loja == 1003:
-            item = cursor.execute(f"SELECT * FROM ProdutosLoja3 WHERE nome = '{nome}'").fetchone()
+            item = cursor.execute(f"SELECT * FROM ProdutosLoja3 WHERE nome = '{nome}'").fetchall()
             print(item)
             return item
 
     else:
           return "Loja Não Encontrada" 
-    
+    connection.commit()
+    connection.close()
+
 def cadastrar_produtos(nome, valor, quantidade, loja):
        
-        connection = sqlite3.connect(DB)
+        connection = sqlite3.connect(db)
         cursor = connection.cursor()
 
         if loja == 1001:
