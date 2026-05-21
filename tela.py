@@ -24,7 +24,7 @@ def abrir_tela():
 
     tk.Button(janela, text="Consultar Produtos", width=20, command=busca).pack(pady=5)
     tk.Button(janela, text="Cadastrar Produtos", width=20, command=cadastrar).pack(pady=5)
-    tk.Button(janela, text="Resgistrar Vendas", width=20, command=vender).pack(pady=5)
+    #tk.Button(janela, text="Resgistrar Vendas", width=20, command=vender).pack(pady=5)
     tk.Button(janela, text="Limpar Estoque", width=20, command=limpar).pack(pady=5)
 
     tk.Button(janela, text="SAIR", width=20, command=janela.destroy).pack(pady=5)
