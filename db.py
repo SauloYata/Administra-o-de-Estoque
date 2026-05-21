@@ -55,7 +55,22 @@ def criar_tabelas():
 
         return True
     
+def vender_produtos(produto, loja, quantidade):
+       return True
 
+
+#limpar estoque
+def limpar_estoque():
+    connection = sqlite3.connect(f"{db}")
+    cursor = connection.cursor()    
+
+    cursor.execute("DROP TABLE ProdutosLoja1")
+    cursor.execute("DROP TABLE ProdutosLoja2")
+    cursor.execute("DROP TABLE ProdutosLoja3")
+    connection.commit()
+    print("Estoque deletado")
+
+    return True
 
 #Lista todos os produtos no estoque de uma loja
 def listar_produtos(loja):
@@ -81,7 +96,8 @@ def listar_produtos(loja):
 def consultar_produto(nome, loja):
     # Conecta o banco de dados do sqlite
     connection = sqlite3.connect(f"{db}")
-    cursor = connection.cursor()    
+    cursor = connection.cursor()  
+
     if loja == 1001:
             item = cursor.execute(f"SELECT * FROM ProdutosLoja1 WHERE nome = '{nome}'").fetchall()
             if not item:
@@ -104,6 +120,8 @@ def consultar_produto(nome, loja):
 
     else:
           return "Loja Não Encontrada" 
+    
+    
     connection.commit()
     connection.close()
 
