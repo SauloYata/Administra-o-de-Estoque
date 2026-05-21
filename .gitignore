@@ -1,0 +1,6 @@
+#evita que os itens abaixo subam para o repositorio Git
+*.db
+__pycache__/
+.DS_Store
+
+
