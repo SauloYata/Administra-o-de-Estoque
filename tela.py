@@ -6,7 +6,7 @@ import db
 #abre a janela principal
 def abrir_tela():
     janela = tk.Tk()
-    janela.geometry("400x320")
+    janela.geometry("400x450")
     janela.title("Sistema de Controle de Estoque")
 
     tk.Label(janela, text="Consultar Produtos", font=("Arial", 14)).pack(pady=10)
@@ -24,6 +24,8 @@ def abrir_tela():
 
     tk.Button(janela, text="Consultar Produtos", width=20, command=busca).pack(pady=5)
     tk.Button(janela, text="Cadastrar Produtos", width=20, command=cadastrar).pack(pady=5)
+    tk.Button(janela, text="Resgistrar Vendas", width=20, command=vender).pack(pady=5)
+    tk.Button(janela, text="Limpar Estoque", width=20, command=limpar).pack(pady=5)
 
     tk.Button(janela, text="SAIR", width=20, command=janela.destroy).pack(pady=5)
 
@@ -49,6 +51,28 @@ def busca():
     else:
         todos_produtos = db.listar_produtos(int(loja))
         tabela(todos_produtos)    
+
+def vender():
+
+    item = db.consultar_produto(produto, int(loja))
+    if item:
+        venda = db.vender_produto(produto, loja, quantidade)
+        return venda
+    else:
+        alertas("Erro", "Produto não existe", "warning")
+
+
+
+#limpar estoque
+def limpar():
+   res = alertas("Atenção!", "Tem certeza que deseja apagar o estoque?", "yesorno")
+   if res:
+        db.limpar_estoque()
+   else:
+       print("Clicou em não")
+       return False 
+   
+
 
 
 #cadastrar produtos no banco de dados    
