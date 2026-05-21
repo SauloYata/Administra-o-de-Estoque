@@ -24,29 +24,29 @@ def criar_tabelas():
         # Banco de dados da loja 1
         cursor.execute("CREATE TABLE IF NOT EXISTS ProdutosLoja1 (nome TEXT, valor REAL, quantidade INTEGER, vendidos INTEGER)")
 
-        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('Calça', 19.90, 121, 59)")
-        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('Camisa', 18.22, 151, 69)")
-        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('Casaco', 21.50, 181, 29)")
-        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('Vestido', 15.99, 191, 19)")
-        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('Meias', 9.99, 11, 569)")
+        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('CALÇA', 19.90, 121, 59)")
+        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('CAMISA', 18.22, 151, 69)")
+        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('CASACO', 21.50, 181, 29)")
+        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('VESTIDO', 15.99, 191, 19)")
+        cursor.execute("INSERT INTO ProdutosLoja1 VALUES ('MEIAS', 9.99, 11, 569)")
 
         # Banco de dados da loja 2
         cursor.execute("CREATE TABLE IF NOT EXISTS ProdutosLoja2 (nome TEXT, valor REAL, quantidade INTEGER, vendidos INTEGER)")
 
-        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('Calça', 18.90, 110, 69)")
-        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('Camisa', 19.22, 101, 89)")
-        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('Casaco', '7.50', 011, 569)")
-        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('Vestido', 12.99, 111, 19)")
-        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('Meias', 9.99, 11, 94)")
+        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('CALÇA', 18.90, 110, 69)")
+        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('CAMISA', 19.22, 101, 89)")
+        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('CASACO', '7.50', 011, 569)")
+        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('VESTIDO', 12.99, 111, 19)")
+        cursor.execute("INSERT INTO ProdutosLoja2 VALUES ('MEIAS', 9.99, 11, 94)")
 
         # Banco de dados da loja 3
         cursor.execute("CREATE TABLE IF NOT EXISTS ProdutosLoja3 (nome TEXT, valor REAL, quantidade INTEGER, vendidos INTEGER)")
 
-        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Calça', 39.90, 161, 90)")
-        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Camisa', 18.22, 131, 59)")
-        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Casaco', 22.50, 181, 19)")
-        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Vestido', 13.9, 511, 99)")
-        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('Meia', 99.99, 121, 39)")
+        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('CALÇA', 39.90, 161, 90)")
+        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('CAMISA', 18.22, 131, 59)")
+        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('CASACO', 22.50, 181, 19)")
+        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('VESTIDO', 13.9, 511, 99)")
+        cursor.execute("INSERT INTO ProdutosLoja3 VALUES ('MEIAS', 99.99, 121, 39)")
 
         connection.commit()
         connection.close()

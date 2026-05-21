@@ -33,7 +33,7 @@ def abrir_tela():
 #buscar produtos no banco de dados
 def busca():
     loja = entrada_loja.get().strip()
-    produto = entrada_produto.get()
+    produto = entrada_produto.get().upper()
 
     if not loja:
         print("digita o número da loja primeiro")
