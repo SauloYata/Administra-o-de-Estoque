@@ -52,14 +52,6 @@ def busca():
         todos_produtos = db.listar_produtos(int(loja))
         tabela(todos_produtos)    
 
-def vender():
-
-    item = db.consultar_produto(produto, int(loja))
-    if item:
-        venda = db.vender_produto(produto, loja, quantidade)
-        return venda
-    else:
-        alertas("Erro", "Produto não existe", "warning")
 
 
 
