@@ -36,9 +36,16 @@ Lojas disponíveis:
   
 - Para cadastrar um novo produto, clique em Cadastrar Produtos, digite o nome do produto, o preço, a quantidade, e o numero da loja, depois clique em incluir. 
 
+NOME DOS INTEGRANTES DO TRABALHO:
+
 PEDRO PAULO NEVES PORTELLA.
+
 SAULO DA CRUZ DE OLIVEIRA.
+
 KRISTHIELLE DE ALVARENGA FIRMINO.
+
 ANA BEATRIZ DE OLIVEIRA.
+
 LUCAS BEZERRA LOUREIRO.
+
 JORGE LUIS RODRIGUES DE SOUSA.
