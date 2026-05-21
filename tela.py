@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 import db
 
 #abre a janela principal
@@ -36,6 +37,7 @@ def busca():
 
     if not loja:
         print("digita o número da loja primeiro")
+        alertas("Erro!", "Digite o número da loja!", "error")
         return False
     
     elif produto:
@@ -99,41 +101,48 @@ def cadastrar():
                  nome = entrada_nome.get()
                  if nome == "":
                       mensagem("Nome Inválido")
+                      alertas("Erro!", "Insira um nome", "warning")
                  
             except ValueError:
                 print("Erro", "Nome inválido.")
-                mensagem("Erro. Nome inválido.")
+                alertas("Erro!", "Nome Inválido", "warning")
 
             try:
                 valor = float(entrada_valor.get().strip())
             except ValueError:
                 print("Erro", "Preço inválido.")
-                mensagem("Erro. Preço inválido.")
+                alertas("Erro.", "Preço inválido.", "warning")
                  
             
             try:
                 quantidade = int(entrada_quant.get().strip())
             except ValueError:
                 print("Erro", "Quantidade inválida.")
-                mensagem("Erro. Quantidade inválida.")
+                alertas("Erro.", "Quantidade inválida.","warning")
                 
             try:
                 loja_text = numero_loja.get().strip()
                 if loja_text not in ("1001", "1002", "1003"):
                     print("Erro", "Código da loja inválido.")
-                    mensagem("Erro. Loja Não Existe.")
+                    alertas("Erro!", "Loja Não Existe.", "warning")
                 else:
                      loja_num = int(loja_text)
             except:
-                    mensagem("Erro. Loja inválida.") 
+                    mensagem("Loja inválida.")
+                    alertas("Erro!", "Loja Inválida", "error") 
             
             
-
-            db.cadastrar_produtos(nome, valor, quantidade, loja_num)
-
-            print("Sucesso", "Produto cadastrado.")
-            mensagem("Sucesso. Produto cadastrado.")
-            limpar_campos()
+            #salva o produto no db
+            callback = alertas("Confirmar", "Deseja realmente incluir o item?", "yesorno")
+            if callback:
+                 db.cadastrar_produtos(nome, valor, quantidade, loja_num)
+                 print("Sucesso", "Produto cadastrado.")
+                 alertas("Sucesso.", f"O produto {nome} foi cadastrado com sucesso na loja {loja_num}.", "info")
+                 limpar_campos()
+            else:
+                print("clicou em não")
+                return False
+            
 
             
 
@@ -163,3 +172,21 @@ def tabela(texto):
 
 if __name__ == "__main__":
     tabela()
+
+
+#exibe alertas na tela
+def alertas(titulo, mensagem, tipo):
+    if tipo == "info":
+        messagebox.showinfo(titulo, mensagem)
+    elif tipo == "warning":
+        messagebox.showwarning(titulo, mensagem)
+    elif tipo == "error":
+        messagebox.showerror(titulo, mensagem)
+    elif tipo == "yesorno":
+         resposta = messagebox.askyesno(titulo, mensagem)
+         if resposta:
+            print("clicou em Sim")
+            return True
+         else:
+            print("clicou em Não")
+            return False

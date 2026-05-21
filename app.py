@@ -10,3 +10,4 @@ db.criar_db(database)
 if __name__ == "__main__":
     #abre a janela TK
     tela.abrir_tela()
+    
