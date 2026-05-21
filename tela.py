@@ -42,7 +42,10 @@ def busca():
     
     elif produto:
             item = db.consultar_produto(produto, int(loja))
-            tabela(item)
+            if item:
+                tabela(item)
+            else:
+                alertas("Não Encontrado.", f"O Produto {produto} não foi encontrado na loja {loja}.", "info")
     else:
         todos_produtos = db.listar_produtos(int(loja))
         tabela(todos_produtos)    
