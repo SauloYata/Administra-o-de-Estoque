@@ -30,6 +30,15 @@ Lojas disponíveis:
 * 1002
 * 1003
 
+* 
+
 - Para consultar um produto específico, digite o número da loja e o nome do produto e depois clique em Consultar Produtos, deverá aparecer o resultado com as informações do produto unitário.
   
 - Para cadastrar um novo produto, clique em Cadastrar Produtos, digite o nome do produto, o preço, a quantidade, e o numero da loja, depois clique em incluir. 
+
+PEDRO PAULO NEVES PORTELLA
+SAULO DA CRUZ DE OLIVEIRA
+KRISTHIELLE DE ALVARENGA FIRMINO
+ANA BEATRIZ DE OLIVEIRA	
+LUCAS BEZERRA LOUREIRO
+JORGE LUIS RODRIGUES DE SOUSA
